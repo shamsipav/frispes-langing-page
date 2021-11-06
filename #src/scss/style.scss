@@ -1,0 +1,415 @@
+@use "sass:math";
+//<МИКСИНЫ>===============================================================================================
+@import "mixins";
+//</МИКСИНЫ>===============================================================================================
+
+//<ШРИФТЫ>===============================================================================================
+
+//<Подключаем шрифты>=======================================================================================
+//&display=swap&subset=cyrillic-ext
+@import "fonts";
+//</Подключаем шрифты>=======================================================================================
+
+//<Иконочные шрифты>==========================================================================================
+@import "icons";
+//</Иконочные шрифты>==========================================================================================
+
+//<Шрифт по умолчанию>==========================================================================================
+$fontFamily: "Lato";
+$fontSize: 16;
+//</Шрифт по умолчанию>==========================================================================================
+
+//</ШРИФТЫ>=======================================================================================================
+
+//<ПЕРЕМЕННЫЕ>==========================================================================================================
+$minWidth: 320px;
+$maxWidth: 1440;
+$maxWidthContainer: 1110 + 30; // + 30px
+$md1: $maxWidthContainer + 12;
+$md2: 991.98;
+$md3: 767.98;
+$md4: 479.98;
+
+$mainColor: #000;
+$primaryColor: #10375c;
+$colorBlack: #222831;
+$colorRed: #dd2c00;
+$colorWhite: #ffffff;
+$colorSecondary: #ff5722;
+$colorGray: #9a9a9a;
+
+//</ПЕРЕМЕННЫЕ>===========================================================================================================
+
+//<ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>===============================================================================================
+@import "null";
+body {
+  color: $mainColor;
+  &._lock {
+    overflow: hidden;
+  }
+}
+//</ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>===============================================================================================
+
+//<ОБОЛОЧКА>===========================================================================================================
+.wrapper {
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  // &._loaded {
+  // }
+}
+//</ОБОЛОЧКА>===========================================================================================================
+
+//<ОСНОВНАЯ СЕТКА>===========================================================================================================
+._container {
+  max-width: $maxWidthContainer + px;
+  margin: 0 auto;
+  padding: 0 15px;
+  // 	@media (max-width: $md1 + px) {
+  // 		max-width: 970px;
+  // 	}
+  // 	@media (max-width: $md2+px) {
+  // 		max-width: 750px;
+  // 	}
+  // 	@media (max-width: $md3+px) {
+  // 		max-width: none;
+  // 		padding: 0 10px;
+  // 	}
+}
+//</ОСНОВНАЯ СЕТКА>===========================================================================================================
+
+//<ПОДКЛЮЧЕНИЕ ФАЙЛОВ UI СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ>====================================================================================================
+@import "forms";
+@import "ui";
+//</ПОДКЛЮЧЕНИЕ ФАЙЛОВ UI СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ>====================================================================================================
+
+//<ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================
+//@import "datepicker";
+//@import "lightgallery";
+//@import "pagging";
+// @import "popup";
+@import "header";
+@import "footer";
+// @import "home";
+@import "swiper";
+//</ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================
+
+//<ОСНОВНОЙ БЛОК>====================================================================================================
+.page {
+  flex: 1 1 auto;
+  // &__introduce {
+  // }
+
+  // &__space {
+  // }
+
+  // &__space {
+  // }
+}
+
+//===================================================================================================================================
+.introduce {
+  @include adaptiv-value("padding-top", 165, 90, 1);
+  @include adaptiv-value("padding-bottom", 112, 37, 1);
+  // .introduce__container
+  &__container {
+    position: relative;
+  }
+
+  // .introduce__marker
+  &__marker {
+    font-size: 20px;
+    font-weight: 500;
+    color: $colorBlack;
+    position: relative;
+    display: inline-block;
+    margin: 0px 0px math.div(8px, 20px) * 1em 0px;
+
+    &::after {
+      position: absolute;
+      top: 60%;
+      left: 115%;
+      content: "";
+      width: 73px;
+      height: 2px;
+      background-color: $colorBlack;
+    }
+  }
+
+  // .introduce__info
+  &__info {
+    @media (min-width: $md3 + px) {
+      display: flex;
+    }
+  }
+
+  // .introduce__heading
+  &__heading {
+    @media (min-width: $md3 + px) {
+      flex: 0 0 60%;
+      margin: 0px math.div(60px, 52px) * 1em 0px 0px;
+    }
+    @include adaptiv-value("font-size", 52, 34, 1);
+    line-height: 130%;
+    margin: 0px 0px math.div(10px, 52px) * 1em 0px;
+  }
+
+  // .introduce__description
+  &__description {
+    font-weight: 500;
+    @include adaptiv-value("font-size", 20, 16, 1);
+    line-height: 150%;
+    color: #6a6a6a;
+    text-align: left;
+    margin: 0px 0px 20px 0px;
+  }
+
+  // .introduce__content
+  &__content {
+    position: relative;
+  }
+
+  // .introduce__image
+  &__image {
+    @media (max-width: 600px) {
+      display: none;
+    }
+    padding-top: 600px;
+    // padding: 0px 0px 145% 0px;
+    position: relative;
+    @include adaptiv-value("left", 315, 0, 1);
+    // img {
+
+    // }
+  }
+}
+.form-introduce {
+  @media (min-width: 600px) {
+    position: absolute;
+    top: 64px;
+  }
+
+  @include adaptiv-value("padding", 40, 20, 1);
+  max-width: 445px;
+  width: 100%;
+  background-color: $primaryColor;
+  // .form-introduce__heading
+  &__heading {
+    @include adaptiv-value("font-size", 34, 22, 1);
+    line-height: 130%;
+    color: $colorWhite;
+    &:not(:last-child) {
+      margin: 0px 0px math.div(30px, 34px) * 1em 0px;
+    }
+  }
+
+  // .form-introduce__item
+  &__item {
+    margin: 0px 0px 16px 0px;
+  }
+
+  // .form-introduce__input
+  &__input {
+    width: 100%;
+    padding: 16px 8px;
+    background-color: #0d2c4a;
+  }
+
+  // .form-introduce__submit
+  &__submit {
+    margin: 6px 0px 0px 0px;
+    text-transform: uppercase;
+    padding: 12px 0;
+    @media (max-width: $md4 + px) {
+      font-size: 16px;
+    }
+    width: 100%;
+    font-weight: 700;
+    transition: box-shadow 0.2s ease 0s;
+    @media (any-hover: hover) {
+      &:hover {
+        box-shadow: 0px 4px 16px rgba(255, 87, 34, 0.32);
+      }
+    }
+  }
+}
+//===================================================================================================================================
+.space {
+  &__container {
+  }
+
+  &__info {
+    display: flex;
+    @media (max-width: 736px) {
+      flex-direction: column;
+    }
+    @include adaptiv-value("margin-bottom", 50, 20, 1);
+  }
+
+  &__heading {
+    flex: 0 0 34%;
+    @include adaptiv-value("font-size", 40, 34, 1);
+    margin: 0px math.div(15px, 40px) * 1em 0px 0px;
+    @media (max-width: 736px) {
+      margin: 0px 0px math.div(10px, 40px) * 1em 0px;
+    }
+  }
+
+  &__description {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 156%;
+    color: $colorGray;
+    flex: 0 0 40%;
+    @media (max-width: $md4 + px) {
+      font-size: 16px;
+    }
+    @media (min-width: 736px) {
+      margin: 0px math.div(15px, 18px) * 1em 0px 0px;
+    }
+  }
+
+  &__navigation {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    width: 100%;
+
+    @media (max-width: 736px) {
+      display: none;
+    }
+  }
+
+  &__arrows {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 24px;
+  }
+
+  &__navigation-prev,
+  &__navigation-next {
+    font-size: 26px;
+    color: $colorGray;
+    transition: color 0.2s ease 0s;
+    @media (any-hover: hover) {
+      &:hover {
+        cursor: pointer;
+        color: $colorSecondary;
+      }
+    }
+  }
+
+  &__navigation-prev {
+  }
+
+  &__navigation-next {
+    transform: scale(-1, 1);
+  }
+
+  &__pagination {
+    text-align: center;
+  }
+}
+
+.slider-space {
+  margin: 0px 0px 52px 0px;
+  &__wrapper {
+  }
+  &__slide {
+    @media (any-hover: hover) {
+      &:hover {
+        cursor: pointer;
+        .slider-space__button {
+          bottom: 0;
+          z-index: 5;
+          max-width: 200px;
+        }
+        .slide-info {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+  }
+
+  &__content {
+    position: relative;
+  }
+
+  &__slide-image {
+    // padding-top: 420px;
+    padding: 0px 0px 122.35% 0px;
+  }
+
+  &__button {
+    position: absolute;
+    left: 0;
+    bottom: 100%;
+    font-size: 10px;
+    color: $colorWhite;
+    height: 72px;
+    width: 72px;
+    background-color: $colorSecondary;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(-90deg);
+    transition: bottom 0.3s ease 0s;
+  }
+
+  &__heading {
+    padding: 25px 0px 10px 0px;
+    font-weight: 700;
+    font-size: 20px;
+    text-align: center;
+  }
+}
+
+.slide-info {
+  transition: all 0.3s ease 0s;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  padding: 16px;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: $primaryColor;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+
+  // .slide-info__mask
+  &__mask {
+    width: 90px;
+    margin: 0px 0px 0px auto;
+  }
+
+  // .slide-info__content
+  &__content {
+    padding: 40px 30px 0px 30px;
+    color: $colorWhite;
+    text-align: center;
+  }
+
+  // .slide-info__heading
+  &__heading {
+    font-family: Lora;
+    font-size: 32px;
+    &:not(:last-child) {
+      margin: 0px 0px math.div(15px, 32px) * 1em 0px;
+    }
+  }
+
+  // .slide-info__description
+  &__description {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 155%;
+  }
+}
+//</ОСНОВНОЙ БЛОК>====================================================================================================
