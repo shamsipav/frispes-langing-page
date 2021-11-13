@@ -310,6 +310,19 @@ body {
 
   &__pagination {
     text-align: center;
+
+    .swiper-pagination-current {
+      font-weight: 500;
+      font-size: 18px;
+      color: $colorBlack;
+    }
+
+    .swiper-pagination-total {
+      // font-family: Roboto;
+      // font-size: 12px;
+      // color: #0d2c4a;
+      color: $colorGray;
+    }
   }
 }
 
